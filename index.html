@@ -1,1 +1,180 @@
-helloworld
+
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Grounded Decoding</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://groundeddecoding.github.io/"/>
+    <meta property="og:title" content="Grounded Decoding" />
+    <meta property="og:description" content="Project page for Language Models with Grounded Decoding for Robot Control" />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Grounded Decoding" />
+    <meta name="twitter:description" content="Project page for Language Models with Grounded Decoding for Robot Control" />
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" 
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" 
+href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script 
+src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script 
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script 
+src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script 
+src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-10 col-md-offset-1 text-center">
+                <b><font size="+4">Language Models with Grounded Decoding for Robot Control</font></b></br> 
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+               ICML 2023 Submission
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+               <video width="100%" height="100%" controls autoplay loop muted>
+                <source src="media/teaser.mp4" type="video/mp4">
+              </video>
+            </div>
+        </div>
+        
+
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+               
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+Recent progress in large language models (LLMs) has demonstrated the ability to learn and leverage Internet-scale knowledge through pre-training with autoregressive models. Unfortunately, applying such models to settings with embodied agents, such as robots, is challenging due to their lack of experience with the physical world, inability to parse non-language observations, and ignorance of rewards or safety constraints that robots may require. On the other hand, language-conditioned robotic policies that learn from interaction data can provide the necessary grounding that allows the agent to be correctly situated in the real world, but such policies are limited by the lack of high-level semantic understanding due to the limited breadth of the interaction data available for training them. Thus, if we want to make use of the semantic knowledge in a language model while still situating it in an embodied setting, we must construct an action sequence that is both likely according to the language model and also realizable according to grounded models of the environment. We frame this as a problem similar to probabilistic filtering: decode a sequence that both has high probability under the language model and high probability under a set of grounded model objectives. We demonstrate this guided decoding strategy is able to solve complex, long-horizon embodiment tasks in a robotic setting by leveraging the knowledge of both models.
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+            	<br>
+                <h3>
+                    Method Overview
+                </h3>
+                <p style="text-align:center;">
+             <!-- mp4 autoplay and loop -->
+              <video width="100%" height="100%" controls autoplay loop muted>
+                <source src="media/beam.mp4" type="video/mp4">
+              </video>
+            </p>
+                <p class="text-justify">
+   Given a free-form language instruction, a <font color="#5A8FEE"><b>language model</b></font> and <font color="#E84A3D"><b>grounded models</b></font> jointly decide the next candidate token to be decoded by <font color="#A354F0"><b>combining</b></font> their respective likelihood. Language model proposes likely tokens that produce goal-directed and coherent long-horizon behaviors, while grounded models connect them to the physical scene, through a flexible composition of multiple objective functions, such as affordance, preferences, and safety, that can be independently obtained. The figure shows an example of applying Grounded Decoding with beam search for decoding the language model to generate an action plan.
+                <p class="text-justify">
+            </div>
+        </div>
+
+
+        <div class="row">
+              <h3>
+                    Video Results
+                </h3>
+              <p class="text-justify">
+                Below we show video results and corresponding decoded action plans for each task.
+              </p>
+        </div>
+        <div class="row">
+              <div class="col-md-6">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="media/icml.mp4" type="video/mp4">
+                </video>
+                <p class="text-justify">
+                  Task: Spell out well-known conferences in machine learning.<br>
+                  Step 1: Pick up I and place it on bottom left side.<br>
+                  Step 2: Pick up C and place it to the right of I.<br>
+                  Step 3: Pick up M and place it to the right of C.<br>
+                  Step 4: Pick up L and place it to the right of M.<br>
+                  Step 5: Done.
+                </p>
+              </div>   
+              <div class="col-md-6">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="media/stack_only_cool_colors.mp4" type="video/mp4">
+                </video>
+                <p class="text-justify">
+                  Task: Stack only the blocks of cool colors.<br>
+                  Step 1: Pick up blue block and place it on green block.<br>
+                  Step 2: Pick up cyan block and place it on blue block.<br>
+                  Step 3: Done.
+                </p>
+              </div>
+        </div>
+        <div class="row">
+              <div class="col-md-6">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="media/pack_picnic.mp4" type="video/mp4">
+                </video>
+                <p class="text-justify">
+                  Task: Pack me a picnic box.<br>
+                  Step 1: Pick up cupcake and place it on picnic box.<br>
+                  Step 2: Pick up orange and place it on picnic box.<br>
+                  Step 3: Done.
+                </p>
+              </div>   
+              <div class="col-md-6">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="media/separate_vowels.mp4" type="video/mp4">
+                </video>
+                <p class="text-justify">
+                  Task: Separate the vowels from the remaining letters.<br>
+                  Step 1: Pick up A and place it on bottom side.<br>
+                  Step 2: Pick up I and place it on bottom side.<br>
+                  Step 3: Pick up O and place it on bottom side.<br>
+                  Step 4: Done.
+                </p>
+              </div> 
+              
+
+        </div>
+            
+      </div>
+     
+     
+</body>
+</html>
