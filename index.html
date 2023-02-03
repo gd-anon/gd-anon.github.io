@@ -70,7 +70,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"
         
         <div class="row">
             <div class="col-md-10 col-md-offset-1 text-center">
-               <video width="100%" height="100%" controls autoplay loop muted>
+               <video width="75%" height="75%" controls autoplay loop muted>
                 <source src="media/teaser.mp4" type="video/mp4">
               </video>
             </div>
@@ -100,7 +100,7 @@ Recent progress in large language models (LLMs) has demonstrated the ability to 
                 </h3>
                 <p style="text-align:center;">
              <!-- mp4 autoplay and loop -->
-              <video width="100%" height="100%" controls autoplay loop muted>
+              <video width="90%" height="90%" controls autoplay loop muted>
                 <source src="media/beam.mp4" type="video/mp4">
               </video>
             </p>
@@ -110,18 +110,20 @@ Recent progress in large language models (LLMs) has demonstrated the ability to 
             </div>
         </div>
 
-
         <div class="row">
+          <div class="col-md-10 col-md-offset-1">
               <h3>
-                    Video Results
+                    Simulated Tabletop Rearrangement
                 </h3>
               <p class="text-justify">
-                Below we show video results and corresponding decoded action plans for each task.
+                In the simulated tabletop rearrangement domain, we show that Grounded Decoding can enable language models to condition on the physical scene to generate grounded action plans. All plans are generated with affordance grounding. For task "pack me a picnic box", the plan is generated additionally with safety grounding (avoid touching the knife) and preference grounding (choosing cupcake and orange which are pre-specified as preferred objects).
               </p>
+          </div>
         </div>
         <div class="row">
-              <div class="col-md-6">
-                <video width="100%" height="100%" controls autoplay loop muted>
+              <div class="col-md-5 col-md-offset-1">
+                <p style="text-align:center;">
+                <video width="80%" height="80%" controls autoplay loop muted>
                   <source src="media/icml.mp4" type="video/mp4">
                 </video>
                 <p class="text-justify">
@@ -132,9 +134,11 @@ Recent progress in large language models (LLMs) has demonstrated the ability to 
                   Step 4: Pick up L and place it to the right of M.<br>
                   Step 5: Done.
                 </p>
+                </p>
               </div>   
-              <div class="col-md-6">
-                <video width="100%" height="100%" controls autoplay loop muted>
+              <div class="col-md-5">
+              <p style="text-align:center;">
+                <video width="80%" height="80%" controls autoplay loop muted>
                   <source src="media/stack_only_cool_colors.mp4" type="video/mp4">
                 </video>
                 <p class="text-justify">
@@ -143,11 +147,13 @@ Recent progress in large language models (LLMs) has demonstrated the ability to 
                   Step 2: Pick up cyan block and place it on blue block.<br>
                   Step 3: Done.
                 </p>
+              </p>
               </div>
         </div>
         <div class="row">
-              <div class="col-md-6">
-                <video width="100%" height="100%" controls autoplay loop muted>
+              <div class="col-md-5 col-md-offset-1">
+                <p style="text-align:center;">
+                <video width="80%" height="80%" controls autoplay loop muted>
                   <source src="media/pack_picnic.mp4" type="video/mp4">
                 </video>
                 <p class="text-justify">
@@ -156,9 +162,11 @@ Recent progress in large language models (LLMs) has demonstrated the ability to 
                   Step 2: Pick up orange and place it on picnic box.<br>
                   Step 3: Done.
                 </p>
+                </p>
               </div>   
-              <div class="col-md-6">
-                <video width="100%" height="100%" controls autoplay loop muted>
+              <div class="col-md-5">
+                <p style="text-align:center;">
+                <video width="80%" height="80%" controls autoplay loop muted>
                   <source src="media/separate_vowels.mp4" type="video/mp4">
                 </video>
                 <p class="text-justify">
@@ -168,9 +176,41 @@ Recent progress in large language models (LLMs) has demonstrated the ability to 
                   Step 3: Pick up O and place it on bottom side.<br>
                   Step 4: Done.
                 </p>
+                </p>
               </div> 
-              
+        </div>
 
+                <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+              <h3>
+                    Real-World Kitchen Mobile Manipulation
+                </h3>
+              <p class="text-justify">
+                In the real-world kitchen mobile manipulation domain, we show that Grounded Decoding with open-vocabulary object detection can help resolve ambiguous queries. The tokens inside the brackets are decoded with Grounded Decoding, where brackets are generated by the language model (i.e., the language model decides when/where to ground itself when the query is ambiguous). Unlike the simulated tabletop domain, since it is difficult to obtain an open-vocabulary language-conditioned policy, we follow SayCan's implementation for decoding "Robot plan". For details, please refer to the paper.
+              </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-1">
+            <p style="text-align:center;">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="media/kitchen.mp4" type="video/mp4">
+                </video>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p class="text-justify">
+              Robot: I am a robot that can bring objects to you. <br>
+              Human: I want a soda that is not coke, and a fruit.<br>
+              Robot thought: I will find the <b>[pepsi]</b> and the <b>[apple]</b><br>
+              Robot plan: 1. Find a pepsi <br>
+              2. Pick up the pepsi<br>
+              3. Bring it to you<br>
+              4. Find an apple<br>
+              5. Pick up the apple<br>
+              6. Bring it to you<br>
+              7. Done 
+            </p>
         </div>
             
       </div>
